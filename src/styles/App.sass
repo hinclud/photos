@@ -1,30 +1,198 @@
-.App
-  text-align: center
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap');
+$marriage-photo: url("https://images.financialexpress.com/2017/07/India-Pakistan.jpg")
 
-.App-logo
-  height: 40vmin
-  pointer-events: none
 
-@media (prefers-reduced-motion: no-preference)
-  .App-logo
-    animation: App-logo-spin infinite 20s linear
+$header-height: 100px
+$bx-sh: 1px 1px 5px lighten(#000, 80)
+$light-color: lighten(#000, 70)
 
-.App-header
-  background-color: #282c34
+@mixin phone
+  @media (max-width: 575px)
+    @content
+
+*
+  font-family: 'MuseoModerno', sans-serif
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-size: calc(.6vw + 1vh)
+  color: $light-color
+
+#root
+  width: 100%
+  display: block
+
+a
+  text-decoration: none !important
+  color: $light-color !important
+  &:hover 
+    color: darken($light-color, 20) !important
+    text-decoration: none !important
+  *
+    text-decoration: none
+    color: $light-color
+    
+    &:hover
+      color: darken($light-color, 20)
+      text-decoration: none
+
+
+ul
+  list-style: none
+
+  li
+    display: inline-block
+    a
+      display: inline-block
+      padding: 15px
+      color: $light-color
+      background: #fff
+      &:hover
+        color: darken($light-color, 25)
+        text-decoration: none
+        background: darken(#fff, 5)
+
+header
+  width: 100%
+  box-shadow: $bx-sh
+
+$max-width: 1000px
+$img: url('http://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+main
+  padding: 1em
+  max-width: $max-width
+  margin: auto
+
+section
   min-height: 100vh
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  font-size: calc(10px + 2vmin)
-  color: white
 
-.App-link
-  color: #61dafb
+.data
+  margin: auto
+  padding: 3em
 
-@keyframes App-logo-spin
-  from
-    transform: rotate(0deg)
+  img
+    display: block
+    width: 100%
+    max-width: 300px
+    margin: auto
 
-  to
-    transform: rotate(360deg)
+  h1
+    width: 100%
+    text-align: center
+    margin-top: 50%
+    display: block
+
+    @include phone
+
+      margin-top: 2em
+
+#achivements-section
+  display: block
+  width: 100%
+  text-align: center
+  height: 500px
+  margin: auto
+
+.images
+  img
+    margin-top: 2em
+
+.image-slider
+  width: 90%
+  max-width: 400px
+  margin: auto
+
+
+#portfolio
+  width: 100%
+  h1
+    font-size: 2em
+    width: 100%
+    display: block
+    text-align: center
+    padding: 2em
+
+
+.blog-post, .blog-post-section
+  margin: 5em
+
+  .img
+    background: $marriage-photo
+    width: 100%
+    background-size: cover
+    background-repeat: no-repeat
+    height: 25em
+
+  a
+    display: block
+    width: 100%
+    text-align: center
+    padding: 2em
+    &:hover
+      color: darken($light-color, 25)
+
+  h1
+    width: 100%
+    text-align: center
+
+  .date
+    padding-top: 2em
+
+    h3
+      display: inline-block
+      font-size: 1.5em
+
+
+.all-posts
+  h1
+    width: 100%
+    text-align: center
+
+
+
+#about
+  width: 100%
+  h1
+    width: 100%
+    text-align: center
+    padding: 2em 0
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 60vh
+    margin: auto
+    padding-bottom: 2em
+
+  .links
+    margin: 3em auto
+    display: block
+    width: 600px
+
+    @include phone
+      width: 300px
+
+    .link
+      margin: 1em
+
+  h3
+    display: block
+    text-align: center
+    width: 100%
+
+
+
+
+
+
+
+
+
+
