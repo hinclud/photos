@@ -1,22 +1,23 @@
-import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import BlogPostSection from './BlogPostSection'
+import BlogPostSection from "./BlogPostSection";
+import { getAllPosts } from "../../utils/api";
 
+export default function () {
+	const [blogs, setBlogs] = React.useState<any[]>([]);
 
-export default function() {
+	useEffect(() => {
+		getAllPosts().then((res) => {
+			setBlogs(res);
+		});
+	}, []);
+
 	return (
 		<div className="all-posts">
-			<h1>Anand Utsav Blog</h1>
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-			<BlogPostSection />
-		</div>)
+			{blogs.map((value) => {
+				return <BlogPostSection blog={value} />;
+			})}
+		</div>
+	);
 }

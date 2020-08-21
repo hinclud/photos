@@ -1,19 +1,36 @@
-import React from 'react';
-import Images from './Images';
+import React, { useState, useEffect } from "react";
+import Images from "./Images";
+import { getPost, getPostImages } from "../../utils/api";
+import { IBlogImage, IBlog } from "../../interfaces";
 
 interface IProps {
-	match?: any
+	match?: any;
 }
 
-export default function(props: IProps) {
+export default function (props: IProps) {
+	const { id } = props?.match?.params;
 
-	// const {id} = props?.match?.params
+	const [blog, setBlog] = useState<IBlog>({});
+	const [images, setImages] = useState<IBlogImage[]>([]);
 
-	return (<div className="blog-post">
-		<div className="date"><h3> 22/02/2020 </h3> <h3 style={{float: 'right'}}> Chakshu & Tanya </h3></div>
-		<p> 
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel tempus ex, vel congue lectus. Vestibulum volutpat porta ultrices. Duis sit amet eleifend massa. Nullam interdum mi at varius sodales. Donec porta, velit sit amet tincidunt pulvinar, magna felis dapibus libero, non lacinia lectus mi id ipsum. Nunc rutrum eget mauris et cursus. Donec fermentum et massa non lobortis. Nulla dictum tempor massa et tristique.
-		</p>
-		<Images />
-	</div>);
+	useEffect(() => {
+		getPost(id).then((data) => {
+			setBlog(data);
+		});
+		getPostImages(id).then((data) => {
+			setImages(data);
+		});
+		console.log("a");
+	}, []);
+
+	return (
+		<div className="blog-post">
+			<div className="date">
+				<h3> {blog.date?.substr(0, 10)} </h3>{" "}
+				<h3 style={{ float: "right" }}> {blog.title} </h3>
+			</div>
+			<p>{blog.description}</p>
+			<Images images={images} />
+		</div>
+	);
 }
