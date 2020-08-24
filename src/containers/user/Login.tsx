@@ -12,7 +12,7 @@ import { login } from "../../utils/api";
 import { history } from "../../utils/history";
 
 const colStyle = {
-	padding: "1em",
+	padding: "20px",
 };
 
 export default function () {

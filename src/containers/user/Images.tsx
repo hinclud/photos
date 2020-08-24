@@ -32,6 +32,7 @@ export default function () {
 
 	return (
 		<div>
+			{images.length == 0 ? <h1>there are no images</h1> : ""}
 			<Gallery
 				images={images}
 				enableImageSelection={true}

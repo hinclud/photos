@@ -13,21 +13,25 @@ export default function (props: IProps) {
 
 	if (matches) {
 		return (
-			<Gallery
-				rowHeight={600}
-				enableLightbox={true}
-				enableImageSelection={false}
-				images={props.images}
-			/>
+			<div className="image-gallery">
+				<Gallery
+					rowHeight={600}
+					enableLightbox={true}
+					enableImageSelection={false}
+					images={props.images}
+				/>
+			</div>
 		);
 	}
 
 	return (
-		<Gallery
-			rowHeight={300}
-			enableLightbox={true}
-			enableImageSelection={false}
-			images={props.images}
-		/>
+		<div className="image-gallery">
+			<Gallery
+				rowHeight={300}
+				enableLightbox={true}
+				enableImageSelection={false}
+				images={props.images}
+			/>
+		</div>
 	);
 }

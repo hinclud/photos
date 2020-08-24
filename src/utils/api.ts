@@ -2,7 +2,7 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 import { IUser } from "../interfaces";
 import { history } from "./history";
 const urlPrefix =
-	process.env.NODE_ENV == "development" ? "https://hinclud.com" : "";
+	process.env.NODE_ENV == "development" ? "http://photos.hinclud.com" : "";
 
 export const request = async (
 	method: "GET" | "PUT" | "POST" | "DELETE",

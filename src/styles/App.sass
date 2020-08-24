@@ -10,6 +10,14 @@ $light-color: lighten(#000, 70)
   @media (max-width: 575px)
     @content
 
+@mixin lg
+  @media (max-width: 800px)
+    @content
+
+@mixin xm
+  @media (max-width: 300px)
+    @content
+
 *
   font-family: 'MuseoModerno', sans-serif
   margin: 0
@@ -17,6 +25,15 @@ $light-color: lighten(#000, 70)
   box-sizing: border-box
   font-size: calc(.6vw + 1vh)
   color: $light-color
+
+  // @include xm
+  //   font-size: 20px
+
+  // @include lg
+  //   font-size: 40px
+
+  // @include phone
+  //   font-size: 30px
 
 #root
   width: 100%
@@ -64,8 +81,8 @@ $img: url('http://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2
   box-sizing: border-box
 
 main
-  padding: .2em
   max-width: $max-width
+
   margin: auto
 
 section
@@ -131,7 +148,7 @@ section
     padding: 2em
 
 .blog-post, .blog-post-section
-  padding: 4.5em
+  padding: 20px
 
   .img
     background: $marriage-photo

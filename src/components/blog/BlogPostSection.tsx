@@ -20,7 +20,10 @@ export default function (props: IProps) {
 				<h3> {props.blog?.date.substr(0, 10)} </h3>{" "}
 				<h3 style={{ float: "right" }}> {props.blog?.title} </h3>
 			</div>
-			<p>{props.blog?.description}</p>
+			<p>
+				{props.blog?.description!.substr(0, 300) +
+					(props.blog?.description!.length! > 300 ? "..." : "")}
+			</p>
 			<div className="img"></div>
 			<Link to={`/blog/entry/${props.blog?.id}`}>Read Post</Link>
 		</div>
