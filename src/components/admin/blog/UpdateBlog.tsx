@@ -43,7 +43,7 @@ export default function (props: IProps) {
 	};
 
 	const uploadImage = async (formData: FormData, onProgress: Function) => {
-		addPostImages(blogPost.id!, formData, onProgress);
+		await addPostImages(blogPost.id!, formData, onProgress);
 	};
 
 	useEffect(() => {

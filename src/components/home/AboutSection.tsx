@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 export default function () {
 	return (
 		<section>
-			<Row id="about-section">
+			<Row className="data" id="about-section">
 				<Col xs={12} sm={6}>
 					<img
-						style={{ maxWidth: "100%", maxHeight: "500px" }}
+						style={{
+							maxWidth: "100%",
+							maxHeight: "500px",
+							margin: "auto",
+						}}
 						src="http://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
 					/>
 				</Col>

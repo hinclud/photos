@@ -24,7 +24,7 @@ $light-color: lighten(#000, 70)
 
 a
   text-decoration: none !important
-  color: $light-color !important
+  // color: $light-color !important
   &:hover
     color: darken($light-color, 20) !important
     text-decoration: none !important
@@ -64,7 +64,7 @@ $img: url('http://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2
   box-sizing: border-box
 
 main
-  padding: 1em
+  padding: .2em
   max-width: $max-width
   margin: auto
 
@@ -91,6 +91,17 @@ section
 
       margin-top: 2em
 
+  h2
+    text-align: center
+
+  p
+    text-align: center
+
+#portfolio-details
+  width: 100%
+  margin-top: 1.5em
+  text-align: center
+
 #achivements-section
   display: block
   width: 100%
@@ -105,10 +116,13 @@ section
 .image-slider
   width: 90%
   max-width: 400px
+  height: 500px
+  background-size: cover
   margin: auto
 
 #portfolio
-  width: 100%
+  min-width: 400px
+  overflow-x: auto
   h1
     font-size: 2em
     width: 100%
@@ -117,7 +131,7 @@ section
     padding: 2em
 
 .blog-post, .blog-post-section
-  margin: 5em
+  padding: 4.5em
 
   .img
     background: $marriage-photo
@@ -139,6 +153,7 @@ section
     text-align: center
 
   .date
+
     padding-top: 2em
 
     h3
@@ -148,6 +163,14 @@ section
 .all-posts
   h1
     width: 100%
+    text-align: center
+
+#about-section
+  margin-top: 7em
+
+  img
+    margin: auto
+  *
     text-align: center
 
 #about

@@ -1,6 +1,8 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosError } from "axios";
 import { IUser } from "../interfaces";
-const urlPrefix = "http://localhost:5000";
+import { history } from "./history";
+const urlPrefix =
+	process.env.NODE_ENV == "development" ? "https://hinclud.com" : "";
 
 export const request = async (
 	method: "GET" | "PUT" | "POST" | "DELETE",
@@ -12,10 +14,13 @@ export const request = async (
 		return new Promise<any>((resolve, reject) => {
 			axios
 				.post(urlPrefix + url, data, config)
-				.then((res) => {
-					resolve(res);
+				.then((res: AxiosResponse) => {
+					resolve(res.data);
 				})
-				.catch((err) => reject(err));
+				.catch((err: AxiosError) => {
+					alert(err.response?.data);
+					reject(err);
+				});
 		});
 	}
 
@@ -28,7 +33,10 @@ export const request = async (
 			.then((res) => {
 				resolve(res.data);
 			})
-			.catch((err) => reject(err));
+			.catch((err: AxiosError) => {
+				alert(err.response?.data);
+				reject(err);
+			});
 	});
 };
 
@@ -111,4 +119,12 @@ export const getUserImages = () => {
 };
 export const updateUserImageSelection = (id: string, data: any) => {
 	return request("PUT", `/api/user/image/${id}`, data);
+};
+
+export const isUser = () => {
+	return request("GET", `/api/is_user`);
+};
+
+export const isAdmin = () => {
+	return request("GET", `/api/is_admin`);
 };

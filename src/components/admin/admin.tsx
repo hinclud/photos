@@ -14,7 +14,7 @@ export default function () {
 				</Link>
 				<Link
 					className="btn btn-block btn-outline-warning"
-					to="/admin/portfolio/"
+					to="/admin/portfolio/add"
 				>
 					Portfolio
 				</Link>

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { isUser, isAdmin } from "../../utils/api";
 
 export default function () {
+	let link = { name: "Login", path: "/login" };
+
 	return (
 		<header>
 			<ul>
@@ -18,7 +21,7 @@ export default function () {
 					<Link to="/blog">Blog</Link>
 				</li>
 				<li>
-					<Link to="/login">Login</Link>
+					<Link to={`${link.path}`}>{`${link.name}`}</Link>
 				</li>
 			</ul>
 		</header>

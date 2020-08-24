@@ -4,7 +4,7 @@ import { addPorfolioImages } from "../../../utils/api";
 
 export default function () {
 	const uploadImages = async (formData: FormData, onProgress: Function) => {
-		addPorfolioImages(formData, onProgress);
+		await addPorfolioImages(formData, onProgress);
 	};
 
 	return (

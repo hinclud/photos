@@ -18,5 +18,10 @@ export default function (images: IImages) {
 		setInterval(next, images.timeout * 1000);
 	}, []);
 
-	return <img className="image-slider" src={image} />;
+	return (
+		<div
+			className="image-slider"
+			style={{ backgroundImage: `url('${image}')` }}
+		/>
+	);
 }

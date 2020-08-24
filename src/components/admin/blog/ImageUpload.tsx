@@ -2,12 +2,14 @@ import React from "react";
 import ImageUploader from "react-images-upload";
 import { addPostImages } from "../../../utils/api";
 import { ProgressBar } from "react-bootstrap";
+import { getCompressed } from "../../../utils/imageCompressor";
 
 interface IUpload {
 	progress: number;
 	current: number;
 	total: number;
 	currentName?: string;
+	isUploading?: boolean;
 }
 
 interface IProps {
@@ -21,37 +23,60 @@ export default function (props: IProps) {
 		total: 0,
 	});
 
-	const onDrop = async (picture: any[]) => {
-		setUpload({ ...upload, total: picture.length });
-		console.log({ ...upload, total: picture.length });
-		for (let index = 0; index < picture.length; index++) {
-			let value = picture[index];
+	const uploadPhoto = async (image: any) => {
+		try {
 			let formData = new FormData();
-			formData.append("image", value);
-			setUpload({ ...upload, current: index + 1 });
+			const compressedImage = await getCompressed(image);
+			formData.append("image", compressedImage, compressedImage.name);
 			await props.onUpload(formData, function (ev: ProgressEvent) {
+				upload.progress = Math.floor((ev.loaded / ev.total) * 100);
 				setUpload({
 					...upload,
-					progress: Math.round((ev.loaded / ev.total) * 100),
 				});
-				console.log((ev.loaded / ev.total) * 100);
 			});
+		} catch (e) {
+			alert(e);
 		}
+	};
+
+	const onDrop = async (picture: any[]) => {
+		upload.total = picture.length;
+		upload.current = 0;
+
+		setUpload({ ...upload });
+
+		for (const value of picture) {
+			while (upload.progress != 100 && upload.progress != 0);
+
+			upload.current = upload.current + 1;
+			setUpload({ ...upload });
+
+			await uploadPhoto(value);
+		}
+		picture.length = 0;
 	};
 
 	return (
 		<div>
 			<ImageUploader
+				withPreview={true}
 				withIcon={true}
+				maxFileSize={100000000}
 				buttonText="Choose images"
 				onChange={onDrop}
 				imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
-				maxFileSize={20242880}
 			/>
 			<div>
-				<h3>
-					Uploading {upload.current} of {upload.total}...
-				</h3>
+				{upload.progress == 100 ? (
+					<h3>
+						Uploaded {upload.current} of {upload.total}...
+					</h3>
+				) : (
+					<h3>
+						Uploading {upload.current} of {upload.total}...
+					</h3>
+				)}
+
 				<ProgressBar min={0} max={100} now={upload.progress} />
 			</div>
 		</div>

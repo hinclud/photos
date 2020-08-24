@@ -10,9 +10,11 @@ export default function () {
 					<div className="data">
 						<ImageSlider
 							urls={[
-								"http://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+								"https://photos.hinclud.com/uploads/1598204365292-371182357blob",
+								"https://photos.hinclud.com/uploads/1598204359849-119607539blob",
+								"https://photos.hinclud.com/uploads/1598204351986-32983738blob",
 							]}
-							timeout={6}
+							timeout={4}
 						/>
 					</div>
 				</Col>

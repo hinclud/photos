@@ -15,7 +15,7 @@ export default function (props: IProps) {
 	const username = props.match.params.username;
 
 	const uploadImages = async (data: FormData, onProgress: Function) => {
-		addUserImages(username, data, onProgress);
+		await addUserImages(username, data, onProgress);
 	};
 
 	return (
